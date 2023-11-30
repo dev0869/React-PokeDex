@@ -49,7 +49,7 @@ const Sidebar = ({ datas }: SidebarProps) => {
       id="scroll"
       className="bg-white flex-[2]   h-[100vh] overflow-y-auto "
     >
-      <div className="sticky w-full p-2 top-0  shadow-lg">
+      <div className="sticky w-full bg-white p-2 top-0  shadow-lg">
         <Search />
       </div>
       <br />

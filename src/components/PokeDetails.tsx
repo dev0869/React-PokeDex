@@ -5,11 +5,15 @@ import { baseUrl } from "../config";
 import PokeDetails2 from "./PokeDetails2";
 import PokeLoader from "./loader/PokeLoader";
 import { getTypeColor } from "../utils";
+import { signal } from "@preact/signals-react";
+
+export const pokeName=signal<Pokemon |null>(null)
+
 const PokeDetails = () => {
   const { id } = useParams();
-
   const name = useLocation().state;
-
+  console.log(name);
+   pokeName.value=name;
   const Api = `${baseUrl}/${id ||1}`;
   const pokemonDetails = async () => {
     const res = await axios.get(Api);

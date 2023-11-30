@@ -1,7 +1,7 @@
 export const typeColors = [
     { type: "bug", code: "#8CB230" },
     { type: "dark", code: "#58575F" },
-    { type: "dragon", code: "#0F6ACO" },
+    { type: "dragon", code: "#0F6AC0" },
     { type: "electric", code: "#eab308" },
     { type: "fairy", code: "#ED6EC7" },
     { type: "fighting", code: "#D04164" },
