@@ -1,6 +1,17 @@
+import { useState } from "react";
+import { useAppDispatch } from "../app/hook";
+import { Searchpokemon } from "../features/pokeSlice";
+
 const Search = () => {
+  const [input, setInput] = useState<string>("");
+  const dispatch = useAppDispatch();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(Searchpokemon(input));
+  };
+
   return (
-    <form className="flex items-center">
+    <form onSubmit={handleSubmit} className="flex items-center">
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
@@ -14,6 +25,8 @@ const Search = () => {
         </div>
         <input
           type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
           id="simple-search"
           className="bg-gray-50 border focus:outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  "
           placeholder="Search Pokemon..."

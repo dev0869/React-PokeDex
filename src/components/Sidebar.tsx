@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
-
+import { useAppSelector } from "../app/hook";
 type Pokemon = {
   name: string;
   url: string;
@@ -13,19 +12,23 @@ type SidebarProps = {
 };
 
 const Sidebar = ({ datas }: SidebarProps) => {
+  const poke = useAppSelector((state) => state.pokemon.data);
+
   const [displayedData, setDisplayedData] = useState<number>(20);
   const container = document.getElementById("scroll");
 
- 
+  const filterPokemon = datas?.filter((ele) => ele.name.includes(poke));
+  const data =
+    filterPokemon && filterPokemon.length <= 0 ? datas : filterPokemon;
 
   useEffect(() => {
     const handleScroll = () => {
       if (!container) return;
-  
+
       const scrollPosition = container.scrollTop;
       const scrollHeight = container.scrollHeight;
       const containerHeight = container.clientHeight;
-  
+
       if (scrollPosition + containerHeight === scrollHeight) {
         setDisplayedData((prevCount) => prevCount + 20);
       }
@@ -40,20 +43,31 @@ const Sidebar = ({ datas }: SidebarProps) => {
   }, [container]);
 
   return (
-    <div id="scroll" className="bg-red-500 flex-[2]   h-[100vh] overflow-y-auto ">
+    <div
+      id="scroll"
+      className="bg-red-500 flex-[2]   h-[100vh] overflow-y-auto "
+    >
       <div className="sticky w-full p-2 top-0  shadow-lg">
         <Search />
       </div>
       <br />
-      <div  className="cursor-pointer p-2">
-        {datas?.slice(0, displayedData).map((ele) => {
+      <div className="cursor-pointer p-2">
+        {data?.slice(0, displayedData).map((ele) => {
           const id = parseInt(ele.url.split("pokemon/")[1]);
           return (
-            <Link to={`/${id}`} state={ele} key={id} className="flex mb-2 items-center gap-3 p-2 ">
+            <Link
+              to={`/${id}`}
+              state={ele}
+              key={id}
+              className="flex mb-2 items-center gap-3 p-2 "
+            >
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
                 alt="pk"
                 width={80}
+                onError={(e) => {
+                  e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`;
+                }}
               />
               <div>
                 <p className="text-md text-gray-700">#{id}</p>
