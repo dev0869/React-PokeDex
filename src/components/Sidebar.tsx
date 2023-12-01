@@ -47,9 +47,9 @@ const Sidebar = ({ datas }: SidebarProps) => {
   return (
     <div
       id="scroll"
-      className={`bg-white ${pokeToglle.value ?'flex-[2]':'hidden' }    h-[100vh] overflow-y-auto `}
+      className={`bg-white ${pokeToglle.value ?'flex-[2]':'hidden' } w-full sm:w-0  absolute z-[9999]  sm:relative  h-[100vh] overflow-y-auto `}
     >
-      <div className="sticky w-full bg-white p-2 top-0  shadow-lg">
+      <div className="sticky w-full   bg-white p-2 top-0  shadow-lg">
         <Search />
       </div>
       <br />
@@ -61,10 +61,16 @@ const Sidebar = ({ datas }: SidebarProps) => {
 
           return (
             <Link
+            onClick={()=>{
+              if (window.innerWidth<=500) {
+                pokeToglle.value = !pokeToglle.value;
+              }
+            }}
               to={`/${id}`}
               state={ele}
               key={id}
-              className="flex mb-2 items-center gap-3 p-2 "
+              
+              className="flex mb-2 items-center gap-3 p-2  "
             >
               <img className=""
                 src={error ? alternativeImageUrl : imageUrl}

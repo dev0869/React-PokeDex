@@ -35,24 +35,24 @@ const PokeDetails = () => {
   const color = getTypeColor(data?.types[0]?.type?.name);
 
   return (
-    <div className="bg-[#f4f4f5] relative h-[100vh] flex-[8] flex ">
+    <div className="bg-[#f4f4f5] flex-wrap sm:flex-nowrap relative h-[100vh] flex-[8] flex ">
       {isLoading ? (
         <PokeLoader />
       ) : (
         <>
           <div
-            className="flex p-2 flex-[4]"
+            className="flex p-2 flex-wrap sm:flex-nowrap sm:flex-[4]"
             style={{ background: `radial-gradient(#fffADA,${color})` }}
           >
             <img  onClick={()=>pokeToglle.value=!pokeToglle.value} src={menu} alt="asdada" className="h-[28px] w-[28px]  mt-3 cursor-pointer" />
             <p
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-              className="text-white capitalize text-[60px] pl-4 pt-9 font-bold "
+              className="text-white capitalize text-[30px] sm:text-[60px] pl-4 pt-1 sm:pt-9 font-bold "
             >
               {name?.name}
             </p>
             <img
-              className="absolute  bottom-0 "
+              className="relative sm:absolute  bottom-0 "
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${
                 id || 1
               }.png`}
@@ -63,7 +63,7 @@ const PokeDetails = () => {
               }}
             />
           </div>
-          <div className="flex flex-[8] p-2">
+          <div className="flex w-full sm:w-0 sm:flex-[8] p-2">
             <PokeDetails2 idno={id} colors={color} datas={data} />
           </div>
         </>

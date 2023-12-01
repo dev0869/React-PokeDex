@@ -18,10 +18,10 @@ const PokeDetails2 = ({ datas, idno, colors }: Props) => {
   );
   return (
     <>
-      <div className="shadow-2xl  w-full p-[10px] rounded-lg">
-        <p className="text-[40px] text-gray-300 font-bold ">#{idno}</p>
+      <div className="shadow-2xl   w-full p-[10px] rounded-lg">
+        <p className="text-[40px] hidden sm:block text-gray-300 font-bold ">#{idno}</p>
 
-        <p className="text-[40px] text-gray-600 capitalize text-center font-bold ">
+        <p className="text-[40px] hidden sm:block text-gray-600 capitalize text-center font-bold ">
           {pokeName.value && pokeName.value.name}
         </p>
         <div className="flex gap-2 justify-center m-4">
