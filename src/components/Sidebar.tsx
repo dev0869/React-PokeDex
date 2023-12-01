@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hook";
-
+import { pokeToglle } from "./PokeDetails";
 type SidebarProps = {
   datas: Pokemon[];
 };
@@ -47,7 +47,7 @@ const Sidebar = ({ datas }: SidebarProps) => {
   return (
     <div
       id="scroll"
-      className="bg-white flex-[2]   h-[100vh] overflow-y-auto "
+      className={`bg-white ${pokeToglle.value ?'flex-[2]':'hidden' }    h-[100vh] overflow-y-auto `}
     >
       <div className="sticky w-full bg-white p-2 top-0  shadow-lg">
         <Search />
