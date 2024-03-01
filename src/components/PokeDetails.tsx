@@ -28,10 +28,6 @@ const PokeDetails = () => {
     queryFn: pokemonDetails,
   });
 
-
-
-
-
   const color = getTypeColor(data?.types[0]?.type?.name);
 
   return (

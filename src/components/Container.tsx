@@ -7,7 +7,6 @@ const Container = () => {
     <Routes >
         <Route path='/' element={<PokeDetails/>}> </Route>
         <Route path='/:id' element={<PokeDetails/>}> </Route>
-
     </Routes>
    
   );
