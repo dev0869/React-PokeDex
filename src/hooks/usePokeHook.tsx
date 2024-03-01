@@ -6,7 +6,6 @@ const usePokeHook = () => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState<Pokemon[]>([]);
   const pokemon = data;
-  console.log(pokemon);
   const fetchPoke = async (page: number) => {
     const res = await axios.get(`${baseUrl}?offset=${page}&limit=20`);
     setPage((prev) => prev + 20);
